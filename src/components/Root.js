@@ -9,7 +9,7 @@ const Root = ({store}) => (
         <BrowserRouter>
             <Switch>
                 <Route exact path={process.env.PUBLIC_URL + '/'} component={App} />
-                <Route path={process.env.PUBLIC_URL + '/'} component={LoginView} />
+                <Route path={process.env.PUBLIC_URL + '/login'} component={LoginView} />
             </Switch>
         </BrowserRouter>
     </Provider>
