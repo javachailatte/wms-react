@@ -1,8 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import { render } from 'react-dom';
+import { createStore } from 'redux';
+import reducer from './reducers'
+import Root from './components/Root';
+//import registerServiceWorker from './registerServiceWorker';
+// import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+const store = createStore(reducer);
+
+render(
+    <Root store={store} />,
+    document.getElementById('root')
+);
+
+// TODO: I don't think we need this but I haven't done enough research
+//registerServiceWorker();
