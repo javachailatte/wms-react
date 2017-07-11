@@ -5,7 +5,7 @@ class App extends Component {
   render() {
     return (
         <LinkButton
-            to="/login"
+            to={process.env.PUBLIC_URL + '/login'}
             label="GO TO LOGIN"
         />
     );
