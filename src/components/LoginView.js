@@ -5,11 +5,20 @@ import Button from "./Button";
 import TextField from "./TextField";
 
 const styles = StyleSheet.create({
+    button: {
+        minWidth: '240px',
+    },
     container: {
         textAlign: 'center',
     },
     form: {
-        display: 'inline-block',
+        alignItems: 'center',
+        display: 'flex',
+        flex: 'none',
+        flexDirection: 'column',
+    },
+    input: {
+        minWidth: '240px',
     }
 });
 
@@ -45,9 +54,24 @@ class LoginView extends Component {
                     className={css(styles.form)}>
                     <TextField
                         id="email"
+                        type="text"
                         placeholder="Email"
                         value={this.state.email}
                         onChange={this.handleChange('email')}
+                        style={styles.input}
+                    />
+                    <TextField
+                        id="password"
+                        type="password"
+                        placeholder="Password"
+                        value={this.state.password}
+                        onChange={this.handleChange('password')}
+                        style={styles.input}
+                    />
+                    <Button
+                        style={styles.button}
+                        label="LOGIN"
+                        onClick={this.handleSubmit}
                     />
                 </form>
             </div>

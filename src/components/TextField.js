@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         fontSize: '16px',
         paddingBottom: '8px',
+        paddingTop: '16px',
+        marginBottom: '8px',
+        maxWidth: '240px',
         ':focus': {
             borderBottomColor: 'rgb(0, 0, 0)'
         }
@@ -17,11 +20,11 @@ const styles = StyleSheet.create({
 
 export default class Textfield extends Component {
     render() {
+        const { style , ...otherProps } = this.props;
         return (
             <input
-                { ...this.props }
-                type="text"
-                className={css(styles.input)}/>
+                { ...otherProps }
+                className={css(styles.input, style)}/>
         );
     }
 }
