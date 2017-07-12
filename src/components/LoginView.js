@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {firebaseConnect} from 'react-redux-firebase';
 import {StyleSheet, css} from 'aphrodite';
 import Button from "./Button";
 import TextField from "./TextField";
