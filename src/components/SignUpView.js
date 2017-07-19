@@ -22,10 +22,10 @@ const styles = StyleSheet.create({
 });
 
 
-const LoginView = props => {
+const SignUpView = props => {
     const {
-        email, password,
-        tryLogin, onEmailChange, onPasswordChange
+        email, password, confirm,
+        trySignUp, onEmailChange, onPasswordChange, onConfirmChange
     } = props;
 
     return (
@@ -34,7 +34,7 @@ const LoginView = props => {
             <form
                 onSubmit={
                     e => {
-                        tryLogin(email, password);
+                        trySignUp(email, password, confirm);
                         e.preventDefault();
                     }}
                 className={css(styles.form)}>
@@ -54,6 +54,15 @@ const LoginView = props => {
                     onChange={e => onPasswordChange(e.target.value)}
                     style={styles.input}
                 />
+
+                <TextField
+                    id="confirm"
+                    type="password"
+                    placeholder="Confirm password"
+                    value={confirm}
+                    onChange={e => onConfirmChange(e.target.value)}
+                    style={styles.input}
+                />
                 <Button
                     style={styles.button}
                     type="submit"
@@ -65,4 +74,4 @@ const LoginView = props => {
     );
 };
 
-export default LoginView;
+export default SignUpView;

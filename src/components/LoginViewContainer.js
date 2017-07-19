@@ -3,11 +3,11 @@ import {emailChanged, passwordChanged, tryLogin} from '../actions';
 import LoginView from './LoginView';
 
 const mapStateToProps = (state) => ({
-    email: state.login.email,
-    password: state.login.password,
+    email: state.account.email,
+    password: state.account.password,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
     onEmailChange(text) {
         dispatch(emailChanged(text));
     },
@@ -15,13 +15,13 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(passwordChanged(text));
     },
     tryLogin(email, password) {
-        dispatch(tryLogin(email, password))
+        dispatch(tryLogin(email, password, ownProps.history))
     },
 });
 
-const LoginViewWrapper = connect(
+const LoginViewContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(LoginView);
 
-export default LoginViewWrapper;
+export default LoginViewContainer;
