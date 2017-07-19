@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import React, {Component} from 'react';
+import {css, StyleSheet} from 'aphrodite';
 
 const styles = StyleSheet.create({
     button: {
@@ -21,13 +21,16 @@ const styles = StyleSheet.create({
 });
 
 export default class Button extends Component {
+
     render() {
+        const {style, onClick, label, ...otherProps} = this.props;
         return (
             <button
-                className={css(styles.button, this.props.style)}
-                onClick={this.props.onClick}
+                {...otherProps}
+                className={css(styles.button, style)}
+                onClick={onClick}
             >
-                {this.props.label}
+                {label}
             </button>
         );
     }
