@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, css} from 'aphrodite';
+import {css, StyleSheet} from 'aphrodite';
 import Button from "./Button";
 import TextField from "./TextField";
 
@@ -25,24 +25,13 @@ const styles = StyleSheet.create({
 class LoginView extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            email: '',
-            password: '',
-        }
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange = (key) => (event) => {
-        const newState = {
-            ...this.state,
-            [key]: event.target.value
-        };
-        this.setState(newState);
-    };
-
-    handleSubmit(event) {
-        // do stuff
+    handleSubmit = (event) => {
+        this.props.tryLogin(this.props.email, this.props.password);
         event.preventDefault();
-    }
+    };
 
     render() {
         return (
@@ -55,21 +44,22 @@ class LoginView extends Component {
                         id="email"
                         type="text"
                         placeholder="Email"
-                        value={this.state.email}
-                        onChange={this.handleChange('email')}
+                        value={this.props.email}
+                        onChange={e => this.props.onEmailChange(e.target.value)}
                         style={styles.input}
                     />
                     <TextField
                         id="password"
                         type="password"
                         placeholder="Password"
-                        value={this.state.password}
-                        onChange={this.handleChange('password')}
+                        value={this.props.password}
+                        onChange={e => this.props.onPasswordChange(e.target.value)}
                         style={styles.input}
                     />
                     <Button
                         style={styles.button}
                         label="LOGIN"
+                        disabled={false}
                         onClick={this.handleSubmit}
                     />
                 </form>
@@ -78,4 +68,4 @@ class LoginView extends Component {
     }
 }
 
-export default LoginView;//firebaseConnect()(LoginView);
+export default LoginView;

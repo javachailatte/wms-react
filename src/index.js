@@ -1,12 +1,11 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { createStore } from 'redux';
-import reducer from './reducers'
+import {render} from 'react-dom';
 import Root from './components/Root';
-import { unregister } from './registerServiceWorker';
-// import './index.css';
+import {unregister} from './registerServiceWorker';
+import configureStore from "./configureStore";
 
-const store = createStore(reducer);
+const store = configureStore();
+window.store = store;
 
 render(
     <Root store={store} />,
