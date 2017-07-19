@@ -39,7 +39,7 @@ export const tryLogin = (email, password, history) => {
                 what => {
                     console.log(what);
                     dispatch(login(what.uid));
-                    history.push("/");
+                    history.push(process.env.PUBLIC_URL);
                 },
                 error => {
                     // const errorCode = error.code;
@@ -60,7 +60,7 @@ export const trySignUp = (email, password, confirm, history) => {
                     what => {
                         console.log(what);
                         dispatch(signUp());
-                        history.push("/login");
+                        history.push(process.env.PUBLIC_URL + "/login");
                     },
                     error => {
                         // const errorCode = error.code;
