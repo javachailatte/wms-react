@@ -1,29 +1,20 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import LinkButton from "./LinkButton";
+import LoggedOutView from './LoggedOutView';
 
 class App extends Component {
     render() {
-        const loginButton = (
-            <LinkButton
-                to={process.env.PUBLIC_URL + '/login'}
-                label="GO TO LOGIN"
-            />
-        );
-
         return (
             this.props.isLoggedIn
-                ? (
-                    <h1>You are logged in</h1>
-                )
-                : loginButton
+                ? <h1>You are logged in</h1>
+                : <LoggedOutView/>
         );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.isLoggedIn,
+        isLoggedIn: state.account.isLoggedIn,
     }
 };
 
