@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ItemListContainer from "./ItemListContainer";
 import {connect} from "react-redux";
 import fire from '../fire';
-import {itemsUpdated, logout, showCreate} from "../actions";
+import {itemsUpdated, logout} from "../actions";
 import AddItemContainer from "../containers/AddItemContainer";
 
 class LoggedInView extends Component {

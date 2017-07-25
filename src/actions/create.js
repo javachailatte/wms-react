@@ -30,7 +30,8 @@ export const createItem = item => {
                         description,
                         latLng: latlng
                     }).key;
-                    dispatch(showList());
+                    dispatch(showList(key));
+
                 }
             });
 
