@@ -12,6 +12,7 @@ export const signUp = () => ({
     type: 'SIGN_UP',
 });
 
+//TODO: refactor these into one action with a key
 export const emailChanged = text => ({
     type: 'EMAIL_CHANGED',
     text
