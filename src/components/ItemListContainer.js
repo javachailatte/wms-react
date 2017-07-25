@@ -4,6 +4,8 @@ import {showCreate} from "../actions";
 
 const mapStateToProps = state => ({
     items: state.items,
+    isFiltered: state.list.filterVisible,
+    filter: state.list.filter,
 });
 
 const mapDispatchToProps = dispatch => ({

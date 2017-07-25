@@ -1,13 +1,15 @@
 import React from 'react';
 import {css, StyleSheet} from 'aphrodite';
-import Textfield from "./TextField";
+import TextField from "./TextField";
 import Button from "./Button";
 
 const styles = StyleSheet.create({
     create: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
     },
     select: {
         border: 'none',
@@ -41,7 +43,7 @@ const AddItem = props => (
             }
         }
         className={css(styles.create)}>
-        <Textfield
+        <TextField
             id="title"
             type="text"
             placeholder="Title"
@@ -65,14 +67,14 @@ const AddItem = props => (
             <option value="FOUND">Found</option>
             <option value="NEEDED">Needed</option>
         </select>
-        <Textfield
+        <TextField
             id="location"
             type="text"
             placeholder="Location"
             value={props.location}
             onChange={e => props.onLocationChange(e.target.value)}
             style={styles.input}/>
-        <Textfield
+        <TextField
             id="description"
             type="text"
             placeholder="Description"

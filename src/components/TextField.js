@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default class Textfield extends Component {
+export default class TextField extends Component {
     render() {
         const { style , ...otherProps } = this.props;
         return (
