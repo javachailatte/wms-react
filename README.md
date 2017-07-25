@@ -1,4 +1,4 @@
-# Where's My Stuff (React)
+# Where's My Stuff (React) [![Build Status](https://travis-ci.org/javachailatte/wmsr.svg?branch=master)](https://travis-ci.org/javachailatte/wmsr)
 
 You can find a very basic guide for the project [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
