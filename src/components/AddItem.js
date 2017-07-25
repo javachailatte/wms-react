@@ -7,7 +7,9 @@ const styles = StyleSheet.create({
     create: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
     },
     select: {
         border: 'none',

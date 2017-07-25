@@ -15,6 +15,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         flex: 'none',
         flexDirection: 'column',
+        justifyContent: 'center',
+        height: '100vh',
     },
     input: {
         minWidth: '240px',
