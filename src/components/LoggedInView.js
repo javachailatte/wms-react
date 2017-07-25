@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import ItemListContainer from "./ItemListContainer";
 import {connect} from "react-redux";
 import fire from '../fire';
-import {itemsUpdated} from "../actions";
+import {itemsUpdated, logout, showCreate} from "../actions";
+import AddItemContainer from "../containers/AddItemContainer";
 
 class LoggedInView extends Component {
     componentWillMount() {
@@ -13,17 +14,37 @@ class LoggedInView extends Component {
         });
     }
 
+    getActive() {
+        switch(this.props.active) {
+            case 'list':
+                return <ItemListContainer/>;
+            case 'create':
+                return <AddItemContainer/>;
+            case 'map':
+                return <ItemListContainer/>;
+            default:
+                return <ItemListContainer/>
+        }
+    }
+
     render() {
         return (
-            <ItemListContainer/>
+            this.getActive()
         );
     }
-};
+}
+
+const mapStateToProps = state => ({
+   active: state.view.active,
+});
 
 const mapDispatchToProps = dispatch => ({
     onItemUpdate(newItems) {
         dispatch(itemsUpdated(newItems));
-    }
+    },
+    onClickLogout() {
+        dispatch(logout());
+    },
 });
 
-export default connect(null ,mapDispatchToProps)(LoggedInView);
+export default connect(mapStateToProps, mapDispatchToProps)(LoggedInView);

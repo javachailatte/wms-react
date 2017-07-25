@@ -1,7 +1,7 @@
 const items = (state = [], action) => {
     switch(action.type) {
         case 'ITEMS_UPDATED':
-            console.log(action.newItems);
+            // console.log(action.newItems);
             return ({
                 ...action.newItems
             });
