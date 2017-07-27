@@ -4,7 +4,8 @@ import Map from './Map';
 const getFilteredItems = (items, filter, shouldFilter) => {
     return shouldFilter
         ? Object.keys(items).filter(
-            key => items[key].title.includes(filter))
+            key => items[key].title.toLowerCase().includes(filter)
+                || items[key].status.toLowerCase().includes(filter))
         : Object.keys(items);
 };
 

@@ -63,6 +63,7 @@ const Toolbar = props => {
                 onClick={() => props.dispatch(hideFilter())}
             />
             <TextField
+                autoFocus
                 id="filter"
                 type="text"
                 placeholder="Filter"

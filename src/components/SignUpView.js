@@ -41,6 +41,7 @@ const SignUpView = props => {
                     }}
                 className={css(styles.form)}>
                 <TextField
+                    autoFocus
                     id="email"
                     type="text"
                     placeholder="Email"
