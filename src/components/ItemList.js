@@ -1,7 +1,7 @@
 import React from 'react';
 import {css, StyleSheet} from 'aphrodite';
 import Item from './Item';
-import FloatingActionButton from "./FloatingActionButton";
+import FloatingActionButton from './FloatingActionButton';
 import Toolbar from './Toolbar';
 
 const styles = StyleSheet.create({
@@ -14,12 +14,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const ItemList = props => {
-    const filteredItems = props.isFiltered
-        ? Object.keys(props.items).filter(
-            key => props.items[key].title.includes(props.filter))
-        : Object.keys(props.items);
-
+const ItemList = ({items, filteredItems, onClickNewItem}) => {
     return (
         <div>
             <Toolbar/>
@@ -28,13 +23,13 @@ const ItemList = props => {
                 {filteredItems.map(key =>
                     <Item
                         key={key}
-                        {...props.items[key]}
+                        {...items[key]}
                     />
                 )}
             </ul>
 
             <FloatingActionButton
-                onClick={() => props.onClickNewItem()}
+                onClick={() => onClickNewItem()}
             />
         </div>
     );
