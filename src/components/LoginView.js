@@ -1,22 +1,24 @@
 import React from 'react';
 import {css, StyleSheet} from 'aphrodite';
-import Button from "./Button";
-import TextField from "./TextField";
+import Button from './Button';
+import TextField from './TextField';
+import LinkButton from './LinkButton';
 
 const styles = StyleSheet.create({
     button: {
         minWidth: '240px',
     },
     container: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
         textAlign: 'center',
+        height: '100vh'
     },
     form: {
         alignItems: 'center',
         display: 'flex',
-        flex: 'none',
         flexDirection: 'column',
-        justifyContent: 'center',
-        height: '100vh',
     },
     input: {
         minWidth: '240px',
@@ -63,7 +65,12 @@ const LoginView = props => {
                     label="LOGIN"
                     disabled={false}
                 />
+                <LinkButton
+                    style={styles.button}
+                    to={process.env.PUBLIC_URL + '/'}
+                    label="CANCEL"/>
             </form>
+
         </div>
     );
 };

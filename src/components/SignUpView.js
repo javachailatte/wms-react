@@ -1,7 +1,8 @@
 import React from 'react';
 import {css, StyleSheet} from 'aphrodite';
-import Button from "./Button";
-import TextField from "./TextField";
+import Button from './Button';
+import TextField from './TextField';
+import LinkButton from './LinkButton';
 
 const styles = StyleSheet.create({
     button: {
@@ -72,6 +73,10 @@ const SignUpView = props => {
                     label="LOGIN"
                     disabled={false}
                 />
+                <LinkButton
+                    style={styles.button}
+                    to={process.env.PUBLIC_URL + '/'}
+                    label="CANCEL"/>
             </form>
         </div>
     );
