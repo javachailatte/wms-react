@@ -6,7 +6,7 @@ import {itemsUpdated, logout, showCreate} from '../actions';
 import AddItemContainer from '../containers/AddItemContainer';
 import Toolbar from './Toolbar';
 import FloatingActionButton from './FloatingActionButton';
-import MapView from './MapView';
+import MapContainer from './MapContainer';
 
 class LoggedInView extends Component {
     componentWillMount() {
@@ -20,7 +20,7 @@ class LoggedInView extends Component {
     getActive() {
         const views = {
             list: <ItemListContainer/>,
-            map: <MapView/>,
+            map: <MapContainer/>,
             create: <AddItemContainer/>,
         };
 
