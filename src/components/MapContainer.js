@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import ItemList from "./ItemList";
+import Map from './Map';
 
 const getFilteredItems = (items, filter, shouldFilter) => {
     return shouldFilter
@@ -18,7 +18,6 @@ const mapStateToProps = state => ({
     )
 });
 
-const ItemListContainer = connect(mapStateToProps)(ItemList);
+const MapContainer = connect(mapStateToProps)(Map);
 
-export default ItemListContainer;
-
+export default MapContainer;

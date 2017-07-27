@@ -18,7 +18,7 @@ const list = (state = initialState, action) => {
         case 'LIST_CHANGE_FILTER':
             return({
                 ...state,
-                filter: action.text
+                filter: action.text.toLowerCase()
             });
         default:
             return state;

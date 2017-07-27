@@ -29,19 +29,19 @@ const styles = StyleSheet.create({
 });
 
 
-const Item = props => (
+const Item = ({title, category, status, description}) => (
     <li
         className={css(styles.card)}
     >
         <section
             className={css(styles.top)}
         >
-            <h1 className={css(styles.h1)}>{props.title}</h1>
-            <h2 className={css(styles.h2)}>{props.category}</h2>
+            <h1 className={css(styles.h1)}>{title}</h1>
+            <h2 className={css(styles.h2)}>{status + ' ' + category}</h2>
         </section>
         <section
             className={css(styles.description)}
-        >{props.description}</section>
+        >{description}</section>
     </li>
 );
 
