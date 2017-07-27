@@ -28,6 +28,11 @@ export const confirmChanged = text => ({
     text
 });
 
+export const accountTypeChanged = text => ({
+    type: 'ACCOUNT_TYPE_CHANGED',
+    text
+});
+
 export const showError = (text) => ({
     type: 'SHOW_ERROR',
 });
@@ -49,19 +54,24 @@ export const tryLogin = (email, password, history) => {
                     alert(errorMessage);
                 }
             );
-    }
+    };
 };
 
-export const trySignUp = (email, password, confirm, history) => {
+export const trySignUp = (email, password, confirm, type, history) => {
     return (dispatch) => {
         if (password === confirm) {
             return fire.auth()
                 .createUserWithEmailAndPassword(email, password)
                 .then(
                     what => {
+                        if (type === 'ADMIN') {
+                            fire.database().ref('admins/' + what.uid).set(
+                                what.email.substring(0, what.email.indexOf('@'))
+                            );
+                        }
                         console.log(what);
                         dispatch(signUp());
-                        history.push(process.env.PUBLIC_URL + "/login");
+                        history.push(process.env.PUBLIC_URL + '/login');
                     },
                     error => {
                         // const errorCode = error.code;
@@ -69,9 +79,9 @@ export const trySignUp = (email, password, confirm, history) => {
                         console.log(error);
                         alert(errorMessage);
                     }
-                )
+                );
         } else {
-            dispatch(showError("Passwords do not match"));
+            dispatch(showError('Passwords do not match'));
         }
-    }
+    };
 };

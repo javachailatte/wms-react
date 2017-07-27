@@ -21,13 +21,22 @@ const styles = StyleSheet.create({
     },
     input: {
         minWidth: '240px',
-    }
+    },
+    select: {
+        border: 'none',
+        borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+        fontSize: '16px',
+        minWidth: '240px',
+        paddingRight: '24px',
+        marginBottom: '16px',
+        marginTop: '16px',
+    },
 });
 
 
 const SignUpView = props => {
     const {
-        email, password, confirm,
+        email, password, confirm, type, onAccountTypeChange,
         trySignUp, onEmailChange, onPasswordChange, onConfirmChange
     } = props;
 
@@ -37,7 +46,7 @@ const SignUpView = props => {
             <form
                 onSubmit={
                     e => {
-                        trySignUp(email, password, confirm);
+                        trySignUp(email, password, confirm, type);
                         e.preventDefault();
                     }}
                 className={css(styles.form)}>
@@ -67,10 +76,16 @@ const SignUpView = props => {
                     onChange={e => onConfirmChange(e.target.value)}
                     style={styles.input}
                 />
+                <select
+                    className={css(styles.select)}
+                    onChange={e => onAccountTypeChange(e.target.value)}>
+                    <option value="USER">User</option>
+                    <option value="ADMIN">Admin</option>
+                </select>
                 <Button
                     style={styles.button}
                     type="submit"
-                    label="LOGIN"
+                    label="SIGN UP"
                     disabled={false}
                 />
                 <LinkButton
