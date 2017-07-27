@@ -47,6 +47,11 @@ const account = (state = initialState, action) => {
                 ...state,
                 confirm: action.text
             });
+        case 'ACCOUNT_TYPE_CHANGED':
+            return ({
+                ...state,
+                type: action.text
+            });
         default:
             return state;
     }

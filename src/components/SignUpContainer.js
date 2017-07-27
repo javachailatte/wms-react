@@ -3,7 +3,8 @@ import {
     confirmChanged,
     emailChanged,
     passwordChanged,
-    trySignUp
+    trySignUp,
+    accountTypeChanged
 } from '../actions';
 import SignUpView from './SignUpView';
 
@@ -11,6 +12,7 @@ const mapStateToProps = (state) => ({
     email: state.account.email,
     password: state.account.password,
     confirm: state.account.confirm,
+    type: state.account.type,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -23,8 +25,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     onConfirmChange(text) {
         dispatch(confirmChanged(text));
     },
-    trySignUp(email, password, confirm) {
-        dispatch(trySignUp(email, password, confirm, ownProps.history))
+    onAccountTypeChange(type) {
+        dispatch(accountTypeChanged(type));
+    },
+    trySignUp(email, password, confirm, type) {
+        dispatch(trySignUp(email, password, confirm, type, ownProps.history))
     },
 });
 
