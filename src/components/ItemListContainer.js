@@ -1,6 +1,5 @@
 import {connect} from 'react-redux';
 import ItemList from "./ItemList";
-import {showCreate} from "../actions";
 
 const getFilteredItems = (items, filter, shouldFilter) => {
     return shouldFilter
@@ -18,16 +17,7 @@ const mapStateToProps = state => ({
     )
 });
 
-const mapDispatchToProps = dispatch => ({
-    onClickNewItem() {
-        dispatch(showCreate());
-    }
-});
-
-const ItemListContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ItemList);
+const ItemListContainer = connect(mapStateToProps)(ItemList);
 
 export default ItemListContainer;
 

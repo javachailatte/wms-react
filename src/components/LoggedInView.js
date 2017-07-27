@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
-import ItemListContainer from "./ItemListContainer";
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import fire from '../fire';
-import {itemsUpdated, logout} from "../actions";
-import AddItemContainer from "../containers/AddItemContainer";
+import ItemListContainer from './ItemListContainer';
+import {itemsUpdated, logout, showCreate} from '../actions';
+import AddItemContainer from '../containers/AddItemContainer';
+import Toolbar from './Toolbar';
+import FloatingActionButton from './FloatingActionButton';
+import MapView from './MapView';
 
 class LoggedInView extends Component {
     componentWillMount() {
@@ -15,15 +18,26 @@ class LoggedInView extends Component {
     }
 
     getActive() {
-        switch(this.props.active) {
+        const views = {
+            list: <ItemListContainer/>,
+            map: <MapView/>,
+            create: <AddItemContainer/>,
+        };
+
+        switch (this.props.active) {
             case 'list':
-                return <ItemListContainer/>;
-            case 'create':
-                return <AddItemContainer/>;
             case 'map':
-                return <ItemListContainer/>;
+                return (
+                    <div>
+                        <Toolbar/>
+                        {views[this.props.active]}
+                        <FloatingActionButton
+                            onClick={() => this.props.onClickNewItem()}
+                        />
+                    </div>
+                );
             default:
-                return <ItemListContainer/>
+                return views[this.props.active];
         }
     }
 
@@ -35,12 +49,15 @@ class LoggedInView extends Component {
 }
 
 const mapStateToProps = state => ({
-   active: state.view.active,
+    active: state.view.active,
 });
 
 const mapDispatchToProps = dispatch => ({
     onItemUpdate(newItems) {
         dispatch(itemsUpdated(newItems));
+    },
+    onClickNewItem() {
+        dispatch(showCreate());
     },
     onClickLogout() {
         dispatch(logout());

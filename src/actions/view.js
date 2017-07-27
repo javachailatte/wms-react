@@ -7,5 +7,5 @@ export const showCreate = () => ({
 });
 
 export const showMap = () => ({
-    type: 'VIEW_SHOW_CREATE'
+    type: 'VIEW_SHOW_MAP'
 });

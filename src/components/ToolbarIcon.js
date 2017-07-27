@@ -1,6 +1,6 @@
 import React from 'react';
 import {css, StyleSheet} from 'aphrodite';
-import {SearchIcon, PinIcon, PowerIcon, BackIcon} from './Icons';
+import {SearchIcon, PinIcon, PowerIcon, BackIcon, ListIcon} from './Icons';
 
 const styles = StyleSheet.create({
     icon: {
@@ -17,14 +17,16 @@ const ToolbarIcon = ({icon, onClick}) => {
         search: <SearchIcon/>,
         map: <PinIcon/>,
         power: <PowerIcon/>,
+        list: <ListIcon/>,
     };
 
     return (
-    <a
-        className={css(styles.icon)}
-        onClick={onClick}>
-        {icons[icon]}
-    </a>
-)};
+        <a
+            className={css(styles.icon)}
+            onClick={onClick}>
+            {icons[icon]}
+        </a>
+    );
+};
 
 export default ToolbarIcon;

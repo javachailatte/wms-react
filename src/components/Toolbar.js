@@ -1,7 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {css, StyleSheet} from 'aphrodite';
-import {logout, showFilter, changeFilter, hideFilter} from '../actions';
+import {
+    logout,
+    showFilter,
+    changeFilter,
+    hideFilter,
+    showMap,
+    showList
+} from '../actions';
 import TextField from './TextField';
 import ToolbarIcon from './ToolbarIcon';
 
@@ -34,7 +41,14 @@ const Toolbar = props => {
                 onClick={() => props.dispatch(showFilter())}
             />
             <ToolbarIcon
-                icon='map'
+                icon={props.active === 'list'
+                    ? 'map'
+                    : 'list'
+                }
+                onClick={() => props.active === 'list'
+                    ? props.dispatch(showMap())
+                    : props.dispatch(showList())
+                }
             />
             <ToolbarIcon
                 icon='power'
@@ -67,6 +81,7 @@ const Toolbar = props => {
 };
 
 const mapStateToProps = state => ({
+    active: state.view.active,
     filterVisible: state.list.filterVisible,
     filter: state.list.filter,
 });
